@@ -24,7 +24,7 @@ class Piezas {
 class Peon: public Piezas{
     public:
         void checkMoves () {
-            if (color==B){
+            if (color=='B'){
                 cout << "Tus movimientos disponibles son: ";
                 if(player2.Positions[x+1][y+1] != NULL){
                     cout << " " << (8-(x+1)) << char(65+(y+1));
@@ -34,7 +34,7 @@ class Peon: public Piezas{
                 }
                 if(player2.Positions[x+1][y] != NULL){
                 } else {
-                    cout << " " << (8-(x+1)) << char(65+(y)); 
+                    cout << " " << (8-(x+1)) << char(65+(y));
                 }
                 if(player1.Positions[x+1][y] != NULL){
                 } else {
@@ -43,15 +43,15 @@ class Peon: public Piezas{
                 if(y==1){
                    if(player2.Positions[x+2][y] != NULL){
                     } else {
-                        cout << " " << (8-(x+2)) << char(65+(y)); 
+                        cout << " " << (8-(x+2)) << char(65+(y));
                     }
                     if(player1.Positions[x+2][y] != NULL){
                     } else {
                         cout << " " << (8-(x+2)) << char(65+(y));
-                    } 
+                    }
                 }
-            } 
-                
-            
+            }
+
+
 };
-           
+
