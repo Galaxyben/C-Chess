@@ -1,6 +1,7 @@
 class Players {
     public:
         char Positions[8][8];
+        char color;
 };
 
 class Piezas {
