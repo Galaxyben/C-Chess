@@ -4,13 +4,12 @@
 
 using namespace std;
 
-char p1Positions[8][8];
-char p2Positions[8][8];
+Players playerOne, PlayerTwo;
 
 void llenarArreglos(){
     for (int i = 0; i<8; i++)
     {
-        p1Positions[0][1] = 'P';
+        playerOne.Positions[0][1] = 'P';
     }
 }
 
