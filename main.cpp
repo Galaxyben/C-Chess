@@ -1,8 +1,44 @@
 #include <stdlib.h>
-#include <cstring>
 #include "classes.h"
 
-public Players player1, player2;
+Players player1, player2;
+
+void llenarArreglos();
+
+void printBoard();
+
+int main()
+{
+    string nombres;
+    llenarArreglos();
+    player1.color = 'B';
+    player2.color = 'N';
+    cout << "Bienvenido a C-Chess" << endl << "Cual es el nombre del primer jugador?" << endl;
+    cin >> nombres;
+    player1.setNombre(nombres);
+    system("cls");
+    cout << "Cual es el nombre del segundo jugador?" << endl;
+    cin >> nombres;
+    player2.setNombre(nombres);
+    system("cls");
+    while (1)
+    {
+        system("cls");
+        cout << "Tu turno " << player1.getNombre() << " Introduce la coordenada de la pieza que quieres mover" << endl;
+        cout << "(Recuerda que tu mueves las fichas con la letra " << player1.color << ")" << endl << endl;
+        printBoard();
+        /*Aqui va lo referente a la juagada*/
+        system("PAUSE");
+        system("cls");
+        cout << "Tu turno " << player2.getNombre() << " Introduce la coordenada de la pieza que quieres mover" << endl;
+        cout << "(Recuerda que tu mueves las fichas con la letra " << player2.color << ")" << endl << endl;
+        printBoard();
+        /*Aqui va lo referente a la juagada*/
+        system("PAUSE");
+    }
+    printBoard();
+    return 0;
+}
 
 void llenarArreglos(){
     for (int i = 0; i<8; i++)
@@ -56,7 +92,6 @@ void printBoard(){
         cout << " ";
         for (int j = 0; j<8; j++)
         {
-
             if (player1.Positions[j][i] != NULL)
             {
                 cout << "|" << player1.Positions[j][i] << player1.color;
@@ -78,13 +113,4 @@ void printBoard(){
     }
     cout << "   A  B  C  D  E  F  G  H" << endl;
 
-}
-
-int main()
-{
-    llenarArreglos();
-    player1.color = 'B';
-    player2.color = 'N';
-    printBoard();
-    return 0;
 }
