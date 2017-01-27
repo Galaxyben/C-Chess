@@ -1,12 +1,25 @@
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
 class Players {
-    public:
-        char Positions[8][8];
-        char color;
+private:
+    string nombre;
+public:
+    char Positions[8][8];
+    char color;
+    void setNombre(string nom);
+    string getNombre();
 };
+
+void Players::setNombre(string nom){
+    nombre = nom;
+}
+
+string Players::getNombre(){
+    return nombre;
+}
 
 class Piezas {
     public:
@@ -26,23 +39,23 @@ class Piezas {
 
 class Peon: public Piezas{
     public:
-        void checkMoves ();
+        void checkMoves (Players p1, Players p2);
 };
 
-void Peon::checkMoves()
+void Peon::checkMoves(Players p1, Players p2)
 {
-    if (this.color == 'B')
+    if (color == 'B')
     {
-        cout << "Tus movimientos disponibles son: ";
-        if (player2.Positions[x+1][y+1] != NULL)
+        cout << "Tus movimientos disponibles son: " << endl;
+        if (p2.Positions[x+1][y+1] != NULL)
         {
             cout << " " << (8-(x+1)) << char(65+(y+1));
         }
-        if(player2.Positions[x+1][y-1] != NULL)
+        if(p2.Positions[x+1][y-1] != NULL)
         {
             cout << " " << (8-(x+1)) << char(65+(y-1));
         }
-        if(player2.Positions[x+1][y] != NULL)
+        if(p2.Positions[x+1][y] != NULL)
         {
 
         }
@@ -50,7 +63,7 @@ void Peon::checkMoves()
         {
             cout << " " << (8-(x+1)) << char(65+(y));
         }
-        if (player1.Positions[x+1][y] != NULL)
+        if (p1.Positions[x+1][y] != NULL)
         {
 
         }
@@ -60,7 +73,7 @@ void Peon::checkMoves()
         }
         if(y==1)
         {
-            if(player2.Positions[x+2][y] != NULL)
+            if(p2.Positions[x+2][y] != NULL)
             {
 
             }
@@ -68,7 +81,7 @@ void Peon::checkMoves()
             {
                 cout << " " << (8-(x+2)) << char(65+(y));
             }
-            if(player1.Positions[x+2][y] != NULL)
+            if(p1.Positions[x+2][y] != NULL)
             {
 
             }
@@ -79,5 +92,3 @@ void Peon::checkMoves()
         }
     }
 }
-
-
