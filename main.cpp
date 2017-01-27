@@ -10,6 +10,8 @@ void printBoard();
 int main()
 {
     string nombres;
+    int coordY;
+    char coordX;
     llenarArreglos();
     player1.color = 'B';
     player2.color = 'N';
@@ -27,8 +29,11 @@ int main()
         cout << "Tu turno " << player1.getNombre() << " Introduce la coordenada de la pieza que quieres mover" << endl;
         cout << "(Recuerda que tu mueves las fichas con la letra " << player1.color << ")" << endl << endl;
         printBoard();
+        cout << endl << "Introduce la letra de la coordenada horizontal" << endl;
         /*Aqui va lo referente a la juagada*/
-        system("PAUSE");
+        cin >> coordX;
+        cout << endl << "Introduce el numero de la coordenada vertical" << endl;
+        cin >> coordY;
         system("cls");
         cout << "Tu turno " << player2.getNombre() << " Introduce la coordenada de la pieza que quieres mover" << endl;
         cout << "(Recuerda que tu mueves las fichas con la letra " << player2.color << ")" << endl << endl;
@@ -44,7 +49,15 @@ void llenarArreglos(){
     for (int i = 0; i<8; i++)
     {
         player1.Positions[i][1] = 'P';
+        player1.peones[i].x = i;
+        player1.peones[i].y = 1;
+        player1.peones[i].literal = 'P';
+        player1.peones[i].color = player1.color;
         player2.Positions[i][6] = 'P';
+        player2.peones[i].literal = 'P';
+        player2.peones[i].x = i;
+        player2.peones[i].y = 6;
+        player2.peones[i].color = player2.color;
         for (int j = 0; j<8; j++)
         {
             if (i==0)
