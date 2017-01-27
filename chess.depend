@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1485475903 source:c:\users\adans\onedrive\documents\github\c-chess\main.cpp
+	<stdlib.h>
+	<cstring>
+	"classes.h"
+
+1485475910 c:\users\adans\onedrive\documents\github\c-chess\classes.h
+	<iostream>
+

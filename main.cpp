@@ -1,11 +1,8 @@
-#include <iostream>
 #include <stdlib.h>
 #include <cstring>
 #include "classes.h"
 
-using namespace std;
-
-Players player1, player2;
+public Players player1, player2;
 
 void llenarArreglos(){
     for (int i = 0; i<8; i++)
