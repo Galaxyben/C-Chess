@@ -3,24 +3,6 @@
 
 using namespace std;
 
-class Players {
-private:
-    string nombre;
-public:
-    char Positions[8][8];
-    char color;
-    void setNombre(string nom);
-    string getNombre();
-};
-
-void Players::setNombre(string nom){
-    nombre = nom;
-}
-
-string Players::getNombre(){
-    return nombre;
-}
-
 class Piezas {
     public:
         int x,y;
@@ -41,6 +23,36 @@ class Peon: public Piezas{
     public:
         void checkMoves (Players p1, Players p2);
 };
+
+class Players {
+private:
+    string nombre;
+public:
+    Peon peones[7];
+    string getNombre();
+    char Positions[8][8];
+    char color;
+    void setNombre(string nom);
+    char checarPosition(char cx, int cy);
+};
+
+char Players::checarPosition(char cx, int cy){
+    int px, py;
+    px = int(cx)-65;
+    py = (8-cy);
+    if (Positions[px][py] != NULL)
+    {
+        return Positions[px][py];
+    }
+}
+
+void Players::setNombre(string nom){
+    nombre = nom;
+}
+
+string Players::getNombre(){
+    return nombre;
+}
 
 void Peon::checkMoves(Players p1, Players p2)
 {
