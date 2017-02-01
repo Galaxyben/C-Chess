@@ -2,6 +2,7 @@
 #include "classes.h"
 
 Players player1, player2;
+Peon peonesB[7], peonesN[7];
 
 void llenarArreglos();
 
@@ -9,10 +10,17 @@ void nombresJugadores();
 
 void printBoard();
 
+string verifPstionPza(string ret, char color, int x, int y);
+
+int coorX(char let);
+
+int coorY(int num);
+
 int main()
 {
     int coordY;
     char coordX;
+    string pzaRtrn = "XX";
     llenarArreglos();
     nombresJugadores();
     while (1)
@@ -22,10 +30,15 @@ int main()
         cout << "(Recuerda que tu mueves las fichas con la letra " << player1.color << ")" << endl << endl;
         printBoard();
         cout << endl << "Introduce la letra de la coordenada horizontal" << endl;
-        /*Aqui va lo referente a la juagada*/
         cin >> coordX;
+        coordX = coorX(coordX);
         cout << endl << "Introduce el numero de la coordenada vertical" << endl;
         cin >> coordY;
+        coordY = coorY(coordY);
+        pzaRtrn = verifPstionPza(pzaRtrn, player2.color, coordX, coordY);
+        cout << "Pza encontrada " << pzaRtrn;
+        /*Aqui va lo referente a la juagada*/
+        system("PAUSE");
         system("cls");
         cout << "Tu turno " << player2.getNombre() << " Introduce la coordenada de la pieza que quieres mover" << endl;
         cout << "(Recuerda que tu mueves las fichas con la letra " << player2.color << ")" << endl << endl;
@@ -37,21 +50,54 @@ int main()
     return 0;
 }
 
+string verifPstionPza(string ret, char color, int x, int y){
+
+    for (int i = 0; i < 8; i++)
+    {
+        if (color == 'B')
+        {
+            if (peonesB[i].x == x && peonesB[i].y == y)
+            {
+                ret = peonesB[i].literal;
+                ret += 'B';
+                break;
+            }
+        } else {
+            if (peonesN[i].x == x && peonesN[i].y == y)
+            {
+                ret = peonesN[i].literal;
+                ret += 'N';
+                break;
+            }
+        }
+    }
+    return ret;
+}
+
+int coorX(char let)
+{
+    return int(let)-65;
+}
+
+int coorY(int num)
+{
+    return 8 - num;
+}
+
 void llenarArreglos(){
     for (int i = 0; i<8; i++)
     {
         player1.Positions[i][1] = 'P';
         player2.Positions[i][6] = 'P';
-        /*
-        player1.peones[i].x = i;
-        player1.peones[i].y = 1;
-        player1.peones[i].literal = 'P';
-        player1.peones[i].color = player1.color;
+        peonesB[i].x = i;
+        peonesB[i].y = 1;
+        peonesB[i].literal = 'P';
+        peonesB[i].color = player1.color;
 
-        player2.peones[i].literal = 'P';
-        player2.peones[i].x = i;
-        player2.peones[i].y = 6;
-        player2.peones[i].color = player2.color;*/
+        peonesN[i].literal = 'P';
+        peonesN[i].x = i;
+        peonesN[i].y = 6;
+        peonesN[i].color = player2.color;
         for (int j = 0; j<8; j++)
         {
             if (i==0)
