@@ -5,24 +5,16 @@ Players player1, player2;
 
 void llenarArreglos();
 
+void nombresJugadores();
+
 void printBoard();
 
 int main()
 {
-    string nombres;
     int coordY;
     char coordX;
     llenarArreglos();
-    player1.color = 'B';
-    player2.color = 'N';
-    cout << "Bienvenido a C-Chess" << endl << "Cual es el nombre del primer jugador?" << endl;
-    cin >> nombres;
-    player1.setNombre(nombres);
-    system("cls");
-    cout << "Cual es el nombre del segundo jugador?" << endl;
-    cin >> nombres;
-    player2.setNombre(nombres);
-    system("cls");
+    nombresJugadores();
     while (1)
     {
         system("cls");
@@ -49,15 +41,17 @@ void llenarArreglos(){
     for (int i = 0; i<8; i++)
     {
         player1.Positions[i][1] = 'P';
+        player2.Positions[i][6] = 'P';
+        /*
         player1.peones[i].x = i;
         player1.peones[i].y = 1;
         player1.peones[i].literal = 'P';
         player1.peones[i].color = player1.color;
-        player2.Positions[i][6] = 'P';
+
         player2.peones[i].literal = 'P';
         player2.peones[i].x = i;
         player2.peones[i].y = 6;
-        player2.peones[i].color = player2.color;
+        player2.peones[i].color = player2.color;*/
         for (int j = 0; j<8; j++)
         {
             if (i==0)
@@ -126,4 +120,18 @@ void printBoard(){
     }
     cout << "   A  B  C  D  E  F  G  H" << endl;
 
+}
+
+void nombresJugadores(){
+    string nombres;
+    player1.color = 'B';
+    player2.color = 'N';
+    cout << "Bienvenido a C-Chess" << endl << "Cual es el nombre del primer jugador?" << endl;
+    cin >> nombres;
+    player1.setNombre(nombres);
+    system("cls");
+    cout << "Cual es el nombre del segundo jugador?" << endl;
+    cin >> nombres;
+    player2.setNombre(nombres);
+    system("cls");
 }
